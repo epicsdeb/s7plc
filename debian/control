@@ -1,0 +1,42 @@
+Source: s7plc
+Section: devel
+Priority: extra
+Maintainer: Ralph Lange <rlange@bnl.gov>
+Build-Depends: debhelper (>= 7),
+               epics-dev (>= 3.14.10-10),
+               epics-msi,
+Standards-Version: 3.8.0
+Homepage: <package homepage>
+
+
+Package: libs7plc3.5.1
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: epics-s7plc (= ${source:Version})
+Description: <short descriptions>
+ <Long description>
+ .
+ This package provides shared libraries
+
+Package: epics-s7plc
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends},
+Recommends: edm-s7plc (= ${source:Version})
+Description: <short descriptions>
+ <Long description>
+ .
+ This package provides the database files
+ needed by an IOC using the s7plc support.
+
+Package: epics-s7plc-dev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+         libs7plc3.5.1 (= ${binary:Version}),
+         epics-s7plc (= ${source:Version})
+Recommends: edm-s7plc (= ${source:Version})
+Description: <short descriptions
+ <Long description>
+ .
+ This package provides files needed to build an
+ IOC with the s7plc support.

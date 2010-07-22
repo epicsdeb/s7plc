@@ -1,0 +1,2 @@
+epics-s7plc: non-standard-dir-in-usr usr/epics/
+epics-s7plc: file-in-unusual-dir

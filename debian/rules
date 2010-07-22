@@ -1,0 +1,72 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+# chop out the source version from Changelog (ie 3.14.10)
+# Taken from CDBS
+DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+DEB_NOEPOCH_VERSION = $(shell echo $(DEB_VERSION) | cut -d: -f2-)
+SOV=$(shell echo "$(DEB_NOEPOCH_VERSION)"| cut -f 1 -d '-')
+
+EPICS_HOST_ARCH:=$(shell /usr/epics/base/startup/EpicsHostArch)
+
+
+DEBUG_TAGETS=$(EPICS_HOST_ARCH)-debug
+TARGETS+=$(DEBUG_TAGETS) $(RTEMS_TARGETS)
+
+DEB_MAKE_MAKEVARS += EPICS_HOST_ARCH=$(EPICS_HOST_ARCH)
+DEB_MAKE_MAKEVARS += USE_RPATH=NO
+DEB_MAKE_MAKEVARS += SHRLIB_VERSION=$(SOV)
+DEB_MAKE_MAKEVARS += CROSS_COMPILER_TARGET_ARCHS="$(TARGETS)"
+
+DEB_MAKE_ENVVARS += PATH=\""$$PWD/bin/$(EPICS_HOST_ARCH):$$PATH"\"
+DEB_MAKE_ENVVARS += LD_LIBRARY_PATH=\""$$PWD/lib/$(EPICS_HOST_ARCH):$$LD_LIBRARY_PATH"\"
+
+DEB_MAKE_INVOKE  = $(DEB_MAKE_ENVVARS) $(MAKE) $(DEB_MAKE_MAKEVARS)
+
+build: build-stamp
+build-stamp:
+	dh build --before auto_configure
+
+	$(DEB_MAKE_INVOKE)
+
+	dh build --after auto_test
+	touch $@
+
+clean:
+	dh clean --before auto_clean
+
+	$(DEB_MAKE_INVOKE) distclean
+
+	dh clean --after auto_clean
+
+libname=s7plc
+prefix=debian/tmp/usr
+epicsdir=$(prefix)/epics/base
+epicslibdir=$(epicsdir)/lib/$(EPICS_HOST_ARCH)
+
+install: build install-stamp
+install-stamp:
+	dh install --before auto_install
+
+	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/epics/base
+
+	install -d $(prefix)/lib
+	mv $(epicslibdir)/lib$(libname).so.$(SOV) $(prefix)/lib/
+	rm -f $(epicslibdir)/lib$(libname).so
+	ln -s ../../../lib/lib$(libname).so.$(SOV) $(epicslibdir)/lib$(libname).so
+
+	# Install any autosave request files provided
+	#install -m 644 -t debian/epics-s7plc/usr/epics/base/as/req \
+	#debian/ioc_stats_settings.req
+
+	dh install --after auto_install
+	touch $@
+
+binary-arch: install
+	dh binary-arch 
+
+binary-indep: install
+	dh binary-indep
+
+binary: binary-arch binary-indep
