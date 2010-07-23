@@ -2,3 +2,4 @@ s7App/example.adl
 s7App/example.db
 s7App/example.startup
 s7App/exampleMemoryLayout.txt
+s7App/Makefile
