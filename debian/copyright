@@ -1,18 +1,17 @@
 This package was debianized by Ralph Lange <rlange@bnl.gov> on
 Thu, 22 Jul 2010 14:50:00 -0400.
 
-It was downloaded from <url://example.com>
+It was downloaded from http://epics.web.psi.ch/software/s7plc/
 
 Upstream Authors(s):
 
-    <put author's name and email here>
-    <likewise for another author>
+    Dirk Zimoch <dirk.zimoch@psi.ch>
 
 
 Copyright:
 
-    <Copyright (C) YYYY Name OfAuthor>
-    <likewise for another author>
+    <Copyright (C) 2000-2006 Paul-Scherrer-Institut>
+    <Copyright (C) 2002 Deutsches Elektronen-Synchrotron>
 
 License:
 
@@ -30,7 +29,7 @@ License:
 
     3. You may modify and make a copy or copies of the Software for use within 
        your organization, if you meet the following conditions:
-          1. Copies in source code must include the copyright notice and this 
+          1. Copies in source code must includeinstall  the copyright notice and this 
              Software License Agreement.
           2. Copies in binary form must include the copyright notice and this 
              Software License Agreement in the documentation and/or other 
