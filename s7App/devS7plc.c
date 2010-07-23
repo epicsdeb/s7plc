@@ -1967,7 +1967,7 @@ STATIC long s7plcInitRecordStringin(stringinRecord *record)
     {
         errlogSevPrintf(errlogMinor,
             "%s: string size reduced from %d to %d\n",
-            record->name, priv->dlen, sizeof(record->val));
+            record->name, priv->dlen, (int) sizeof(record->val));
         priv->dlen = sizeof(record->val);
     }
     record->dpvt = priv;
@@ -2047,7 +2047,7 @@ STATIC long s7plcInitRecordStringout(stringoutRecord *record)
     {
         errlogSevPrintf(errlogMinor,
             "%s: string size reduced from %d to %d\n",
-            record->name, priv->dlen, sizeof(record->val));
+            record->name, priv->dlen, (int) sizeof(record->val));
         priv->dlen = sizeof(record->val);
     }
     record->dpvt = priv;
