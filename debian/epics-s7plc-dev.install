@@ -1,2 +1,4 @@
+usr/epics/base/dbd/s7plc.dbd
 usr/epics/base/lib/linux-*/lib*.so
 usr/epics/base/lib/linux-*/lib*.a
+usr/epics/base/lib/linux-*-debug/lib*.so.*

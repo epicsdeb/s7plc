@@ -54,7 +54,7 @@ install-stamp:
 	install -d $(prefix)/lib
 	mv $(epicslibdir)/lib$(libname).so.$(SOV) $(prefix)/lib/
 	rm -f $(epicslibdir)/lib$(libname).so
-	ln -s ../../../lib/lib$(libname).so.$(SOV) $(epicslibdir)/lib$(libname).so
+	ln -s ../../../../lib/lib$(libname).so.$(SOV) $(epicslibdir)/lib$(libname).so
 
 	# Install any autosave request files provided
 	#install -m 644 -t debian/epics-s7plc/usr/epics/base/as/req \

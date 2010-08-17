@@ -1,3 +1,11 @@
+s7plc (3.5.1-2) unstable; urgency=low
+
+  * Fixed soft links for libraries in epics-s7plc-dev.
+  * Fixed missing -debug shared library.
+  * Removed package epics-s7plc.
+
+ -- Ralph Lange <rlange@bnl.gov>  Tue, 17 Aug 2010 16:33:44 -0400
+
 s7plc (3.5.1-1) unstable; urgency=low
 
   * Initial release.
