@@ -13,7 +13,6 @@ Package: libs7plc3.5.1
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Recommends: epics-s7plc (= ${source:Version})
 Description: EPICS Driver for Siemens S7 PLC via TCP/IP
  EPICS Device and Driver Support to connect Siemens S7 PLCs
  using the SEND/RECEIVE protocol via TCP/IP.
