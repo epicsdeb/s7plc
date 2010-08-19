@@ -8,7 +8,7 @@ DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 DEB_NOEPOCH_VERSION = $(shell echo $(DEB_VERSION) | cut -d: -f2-)
 SOV=$(shell echo "$(DEB_NOEPOCH_VERSION)"| cut -f 1 -d '-')
 
-EPICS_HOST_ARCH:=$(shell /usr/epics/base/startup/EpicsHostArch)
+EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
 
 
 DEBUG_TAGETS=$(EPICS_HOST_ARCH)-debug
@@ -42,14 +42,14 @@ clean:
 
 libname=s7plc
 prefix=debian/tmp/usr
-epicsdir=$(prefix)/epics/base
+epicsdir=$(prefix)/lib/epics
 epicslibdir=$(epicsdir)/lib/$(EPICS_HOST_ARCH)
 
 install: build install-stamp
 install-stamp:
 	dh install --before auto_install
 
-	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/epics/base
+	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/lib/epics
 
 	install -d $(prefix)/lib
 	mv $(epicslibdir)/lib$(libname).so.$(SOV) $(prefix)/lib/
@@ -57,7 +57,7 @@ install-stamp:
 	ln -s ../../../../lib/lib$(libname).so.$(SOV) $(epicslibdir)/lib$(libname).so
 
 	# Install any autosave request files provided
-	#install -m 644 -t debian/epics-s7plc/usr/epics/base/as/req \
+	#install -m 644 -t debian/epics-s7plc/usr/lib/epics/as/req \
 	#debian/ioc_stats_settings.req
 
 	dh install --after auto_install
