@@ -8,6 +8,7 @@
 #define drvS7plc_h
 
 #include <dbScan.h>
+#include <errlog.h>
 
 #ifndef __GNUC__
 #define __attribute__(a)
