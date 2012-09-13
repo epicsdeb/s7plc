@@ -2,4 +2,3 @@ usr/lib/epics/dbd/s7plc.dbd
 usr/lib/epics/lib/linux-*/lib*.so
 usr/lib/epics/lib/linux-*/lib*.a
 usr/lib/epics/lib/linux-*-debug/lib*.so.*
-s7plc-example.edl usr/lib/epics/op/edl/s7plc-example.edl

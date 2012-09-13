@@ -2,7 +2,7 @@ Source: s7plc
 Section: devel
 Priority: extra
 Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
-Build-Depends: debhelper (>= 7), epics-debhelper (>= 6~),
+Build-Depends: debhelper (>= 7.0.50~), epics-debhelper (>= 6~),
                epics-dev (>= 3.14.11-2),
                epics-msi, adl2edl,
 Standards-Version: 3.8.0

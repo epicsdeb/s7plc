@@ -1,0 +1,4 @@
+s7plc test server.
+
+The script server.tcl simulates a PLC and the IOC example.startup
+give a test environment for the s7plc driver.

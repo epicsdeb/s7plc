@@ -2,18 +2,18 @@
 
 #export DH_VERBOSE=1
 
-binary binary-arch binary-indep build clean:
+binary binary-arch binary-indep build install clean:
 	dh $@ --with epics -Sepicsmake
 install: build
 binary-arch binary-indep: install
 binary: binary-arch binary-indep
 
-install: build install-stamp
-install-stamp:
-	dh install --until install --with epics -Sepicsmake
+override_dh_auto_build:
+	dh_auto_build
 
-	adl2edl -rgb s7App/example.adl > s7plc-example.edl
-	rm -f adltemp
+	adl2edl -rgb s7App/example.adl > example.edl
 
-	dh install --after install --with epics -Sepicsmake
-	touch $@
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f adltemp s7App/example.adl.db
+	rm -f example.edl
