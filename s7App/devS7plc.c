@@ -5,6 +5,7 @@
 /* $Revision: 1.14 $ */
 
 #include <stdlib.h>
+#include <math.h>
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
@@ -44,7 +45,6 @@
 /* R3.13 */
 #include "compat3_13.h"
 #endif
-#define isnan(x) ((x)!=(x))
 
 /* suppress compiler warning concerning long long with __extension__ */
 #if (!defined __GNUC__) || (__GNUC__ < 2) || (__GNUC__ == 2 && __GNUC_MINOR__ < 8)
