@@ -17,9 +17,6 @@ HOST_OPT = NO
 # Want local functions non-static? Define DEBUG 
 #CFLAGS += -DDEBUG
 
-# Any warning is a bug
-CFLAGS += -Werror
-
 # library
 
 LIBRARY = s7plc
