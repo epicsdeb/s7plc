@@ -12,5 +12,8 @@ install: build install-stamp
 install-stamp:
 	dh install --until install --with epics -Sepicsmake
 
+	adl2edl -rgb s7App/example.adl > s7plc-example.edl
+	rm -f adltemp
+
 	dh install --after install --with epics -Sepicsmake
 	touch $@
