@@ -1,3 +1,10 @@
+s7plc (20120912-1) unstable; urgency=low
+
+  * New upstream version.
+  * As downloaded on 12 Sept 2012
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Thu, 13 Sep 2012 10:31:14 -0400
+
 s7plc (3.5.1-4) unstable; urgency=low
 
   * Install in /usr/lib/epics
