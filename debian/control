@@ -2,14 +2,14 @@ Source: s7plc
 Section: devel
 Priority: extra
 Maintainer: Ralph Lange <rlange@bnl.gov>
-Build-Depends: debhelper (>= 7),
+Build-Depends: debhelper (>= 7), epics-debhelper (>= 6~),
                epics-dev (>= 3.14.11-2),
                epics-msi,
 Standards-Version: 3.8.0
 Homepage: http://epics.web.psi.ch/software/s7plc/
 
 
-Package: libs7plc3.5.1
+Package: libs7plc20120912
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
@@ -22,7 +22,7 @@ Description: EPICS Driver for Siemens S7 PLC via TCP/IP
 Package: epics-s7plc-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
-         libs7plc3.5.1 (= ${binary:Version}),
+         libs7plc20120912 (= ${binary:Version}),
 Description: EPICS Driver for Siemens S7 PLC via TCP/IP
  EPICS Device and Driver Support to connect Siemens S7 PLCs
  using the SEND/RECEIVE protocol via TCP/IP.
